@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fbf7f0"/>
+  <g id="hemi" fill="#efe4cc" stroke="#b9a77f" stroke-width="2.5">
+    <!-- asa do ílio -->
+    <path d="M335,175 C275,110 170,70 95,100 C60,130 66,195 100,238 C130,270 175,290 205,320 L260,330 C255,285 285,230 330,215 Z"/>
+    <!-- ísquio + púbis com forame obturado -->
+    <path d="M205,320 C185,360 190,420 205,470 C215,505 225,530 245,540 C270,548 300,540 320,525 L380,478 L392,470 L392,408 L352,398 C320,388 290,370 262,345 Z"/>
+    <ellipse cx="282" cy="455" rx="46" ry="52" fill="#fbf7f0"/>
+    <!-- acetábulo -->
+    <circle cx="222" cy="368" r="40" fill="#e3d4b0"/>
+    <!-- tuberosidade isquiática -->
+    <ellipse cx="238" cy="528" rx="26" ry="18" fill="#e6d6b0"/>
+    <!-- tubérculo púbico -->
+    <circle cx="350" cy="402" r="8" fill="#e6d6b0"/>
+  </g>
+  <use href="#hemi" transform="translate(800,0) scale(-1,1)"/>
+  <!-- linha pectínea -->
+  <path d="M258,342 C290,368 320,388 345,398" fill="none" stroke="#8a6a3a" stroke-width="3"/>
+  <path d="M542,342 C510,368 480,388 455,398" fill="none" stroke="#8a6a3a" stroke-width="3"/>
+  <!-- sínfise púbica -->
+  <rect x="392" y="405" width="16" height="68" rx="3" fill="#cfe0ea" stroke="#8aa4b8" stroke-width="1.5"/>
+  <!-- sacro -->
+  <path d="M325,168 C360,150 440,150 475,168 L462,240 C452,280 425,315 400,330 C375,315 348,280 338,240 Z" fill="#efe4cc" stroke="#b9a77f" stroke-width="2.5"/>
+  <g fill="#d9caa6"><circle cx="372" cy="200" r="6"/><circle cx="428" cy="200" r="6"/><circle cx="378" cy="240" r="5"/><circle cx="422" cy="240" r="5"/><circle cx="386" cy="272" r="4"/><circle cx="414" cy="272" r="4"/></g>
+  <!-- cóccix -->
+  <rect x="390" y="334" width="20" height="13" rx="4" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <rect x="392" y="350" width="16" height="11" rx="4" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <path d="M394,364 L406,364 L400,378 Z" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <!-- ligamento inguinal -->
+  <path d="M106,240 C190,300 280,370 345,398" fill="none" stroke="#5a8a5a" stroke-width="4" stroke-dasharray="9 6"/>
+  <path d="M694,240 C610,300 520,370 455,398" fill="none" stroke="#5a8a5a" stroke-width="4" stroke-dasharray="9 6"/>
+  <text x="20" y="588" font-family="sans-serif" font-size="13" fill="#7a6a5a">Esquema — pelve óssea, vista anterior (ligamento inguinal tracejado)</text>
+</svg>

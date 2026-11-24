@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640">
+  <rect width="800" height="640" fill="#fbf7f0"/>
+  <!-- referências ósseas e ligamento inguinal -->
+  <circle cx="90" cy="60" r="16" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <circle cx="710" cy="60" r="16" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <path d="M90,60 C180,90 280,120 345,130 M710,60 C620,90 520,120 455,130" fill="none" stroke="#c9b48a" stroke-width="8" stroke-linecap="round"/>
+  <path d="M345,108 L455,108 L455,150 L345,150 Z" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <rect x="395" y="108" width="10" height="42" fill="#cfe0ea"/>
+  <circle cx="345" cy="132" r="9" fill="#e6d6b0" stroke="#b9a77f" stroke-width="2"/>
+  <circle cx="455" cy="132" r="9" fill="#e6d6b0" stroke="#b9a77f" stroke-width="2"/>
+  <!-- lado direito da tela: escroto íntegro -->
+  <path d="M478,150 C495,200 510,250 518,305" fill="none" stroke="#e2cdb0" stroke-width="50" stroke-linecap="round"/>
+  <ellipse cx="520" cy="450" rx="130" ry="150" fill="#efc9a8" stroke="#c99b7a" stroke-width="3"/>
+  <ellipse cx="520" cy="452" rx="48" ry="68" fill="none" stroke="#d9ab88" stroke-width="2" stroke-dasharray="5 5"/>
+  <!-- lado esquerdo da tela: camadas dissecadas -->
+  <ellipse cx="280" cy="450" rx="130" ry="150" fill="#efc9a8" stroke="#c99b7a" stroke-width="3"/>
+  <ellipse cx="280" cy="450" rx="116" ry="136" fill="#c98070"/>
+  <ellipse cx="280" cy="450" rx="102" ry="122" fill="#efe4d0"/>
+  <ellipse cx="280" cy="450" rx="88" ry="108" fill="#c0504a"/>
+  <g stroke="#9a3a35" stroke-width="1.2" fill="none"><path d="M200,400 C210,440 210,470 200,500 M215,370 C228,420 228,480 215,530 M360,400 C350,440 350,470 360,500 M345,370 C332,420 332,480 345,530"/></g>
+  <ellipse cx="280" cy="450" rx="74" ry="94" fill="#f3ead8"/>
+  <ellipse cx="280" cy="450" rx="60" ry="80" fill="#dfe8ef" stroke="#a9bccc" stroke-width="1.5"/>
+  <ellipse cx="276" cy="455" rx="44" ry="64" fill="#f2efe9" stroke="#9aa4b0" stroke-width="3"/>
+  <!-- epidídimo -->
+  <path d="M305,398 C330,405 334,430 326,455 C320,480 322,500 310,515" fill="none" stroke="#dcb67a" stroke-width="13" stroke-linecap="round"/>
+  <!-- septo do escroto e rafe -->
+  <path d="M400,330 L400,588" stroke="#b87060" stroke-width="10"/>
+  <path d="M400,560 L400,610" stroke="#8a5a40" stroke-width="3"/>
+  <g stroke="#8a5a40" stroke-width="2"><path d="M394,568 L406,572 M394,582 L406,586 M394,596 L406,600"/></g>
+  <!-- funículo espermático aberto -->
+  <path d="M286,330 C292,260 305,200 318,150" fill="none" stroke="#c0504a" stroke-width="64" stroke-linecap="round"/>
+  <path d="M286,330 C292,260 305,200 318,150" fill="none" stroke="#f3ead8" stroke-width="44" stroke-linecap="round"/>
+  <path d="M276,330 C280,270 292,210 305,160" fill="none" stroke="#2e5fa8" stroke-width="3"/>
+  <path d="M283,330 C286,270 298,210 310,160" fill="none" stroke="#2e5fa8" stroke-width="3"/>
+  <g fill="none" stroke="#2e5fa8" stroke-width="2"><path d="M276,320 l7,-6 M278,295 l7,-6 M281,270 l7,-6 M285,245 l7,-6 M290,220 l7,-6 M296,195 l7,-6 M301,175 l7,-6"/></g>
+  <path d="M291,330 C294,300 298,280 300,260 C302,235 308,210 316,160" fill="none" stroke="#c0392b" stroke-width="3.5"/>
+  <path d="M302,332 C306,270 314,210 326,160" fill="none" stroke="#8a7a5a" stroke-width="10" stroke-linecap="round"/>
+  <path d="M302,332 C306,270 314,210 326,160" fill="none" stroke="#f5efdc" stroke-width="6" stroke-linecap="round"/>
+  <!-- anel inguinal superficial -->
+  <ellipse cx="320" cy="150" rx="30" ry="14" fill="none" stroke="#9a8a6a" stroke-width="5"/>
+  <ellipse cx="480" cy="150" rx="30" ry="14" fill="none" stroke="#9a8a6a" stroke-width="5"/>
+  <!-- coto do pênis -->
+  <path d="M365,150 L435,150 L435,235 L365,235 Z" fill="#efc9a8" stroke="#c99b7a" stroke-width="2"/>
+  <ellipse cx="400" cy="236" rx="35" ry="20" fill="#efc9a8" stroke="#c99b7a" stroke-width="2"/>
+  <circle cx="388" cy="232" r="10" fill="#b9607a"/><circle cx="412" cy="232" r="10" fill="#b9607a"/><circle cx="400" cy="248" r="6" fill="#c98a9a"/>
+  <text x="20" y="630" font-family="sans-serif" font-size="13" fill="#7a6a5a">Esquema — vista anterior: escroto, funículo e envoltórios do testículo (camadas abertas à esquerda)</text>
+</svg>

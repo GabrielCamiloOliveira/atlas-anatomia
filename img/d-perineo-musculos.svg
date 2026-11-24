@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 720">
+  <rect width="800" height="720" fill="#fbf7f0"/>
+  <!-- ossos: arco púbico, túberes, cóccix -->
+  <path d="M400,48 C330,150 260,330 205,520" fill="none" stroke="#efe4cc" stroke-width="34" stroke-linecap="round"/>
+  <path d="M400,48 C470,150 540,330 595,520" fill="none" stroke="#efe4cc" stroke-width="34" stroke-linecap="round"/>
+  <path d="M400,48 C330,150 260,330 205,520 M400,48 C470,150 540,330 595,520" fill="none" stroke="#b9a77f" stroke-width="1.5"/>
+  <circle cx="200" cy="525" r="30" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <circle cx="600" cy="525" r="30" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <rect x="380" y="28" width="40" height="34" rx="8" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <path d="M388,688 L412,688 L400,714 Z" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <!-- ligamentos sacrotuberais -->
+  <path d="M215,548 L385,700 M585,548 L415,700" stroke="#c9c0b0" stroke-width="8" stroke-linecap="round"/>
+  <!-- obturador interno (parede lateral da fossa isquioanal) -->
+  <path d="M232,520 C240,580 270,630 300,650 L285,668 C245,640 215,590 205,540 Z" fill="#a84a42"/>
+  <path d="M568,520 C560,580 530,630 500,650 L515,668 C555,640 585,590 595,540 Z" fill="#a84a42"/>
+  <!-- levantador do ânus (assoalho da fossa isquioanal) -->
+  <path d="M255,545 C285,600 340,670 400,688 C460,670 515,600 545,545 C500,560 450,575 400,580 C350,575 300,560 255,545 Z" fill="#dd8f86" stroke="#b5574f" stroke-width="2"/>
+  <g stroke="#b5574f" stroke-width="1.2" fill="none">
+    <path d="M280,570 L380,660 M310,565 L388,640 M340,572 L392,620 M520,570 L420,660 M490,565 L412,640 M460,572 L408,620"/>
+  </g>
+  <!-- membrana do períneo / transverso profundo -->
+  <path d="M400,90 L250,470 L550,470 Z" fill="#e8c0b0" stroke="#c99080" stroke-width="1.5"/>
+  <path d="M250,470 L550,470 L555,500 L245,500 Z" fill="#cc7a6a" stroke="#a8584a" stroke-width="1.5"/>
+  <g stroke="#a8584a" stroke-width="1"><path d="M270,476 L270,496 M300,476 L300,496 M330,476 L330,496 M470,476 L470,496 M500,476 L500,496 M530,476 L530,496"/></g>
+  <!-- isquiocavernosos -->
+  <path d="M232,488 C262,380 312,240 368,130" fill="none" stroke="#b5473f" stroke-width="26" stroke-linecap="round"/>
+  <path d="M568,488 C538,380 488,240 432,130" fill="none" stroke="#b5473f" stroke-width="26" stroke-linecap="round"/>
+  <!-- bulboesponjosos -->
+  <path d="M392,150 C318,200 318,430 392,512" fill="none" stroke="#c0504a" stroke-width="28"/>
+  <path d="M408,150 C482,200 482,430 408,512" fill="none" stroke="#c0504a" stroke-width="28"/>
+  <!-- vestíbulo -->
+  <ellipse cx="400" cy="155" rx="9" ry="9" fill="#b4475e"/>
+  <ellipse cx="400" cy="235" rx="5" ry="8" fill="#7a3040"/>
+  <ellipse cx="400" cy="330" rx="24" ry="52" fill="#7a3040"/>
+  <!-- transversos superficiais -->
+  <path d="M222,512 L390,520 L390,534 L222,534 Z" fill="#b5473f"/>
+  <path d="M578,512 L410,520 L410,534 L578,534 Z" fill="#b5473f"/>
+  <!-- corpo do períneo -->
+  <path d="M400,512 L418,530 L400,548 L382,530 Z" fill="#e8d8c0" stroke="#b9a77f" stroke-width="1.5"/>
+  <!-- esfíncter externo do ânus -->
+  <circle cx="400" cy="620" r="36" fill="#b5473f" stroke="#8a3530" stroke-width="2"/>
+  <circle cx="400" cy="620" r="13" fill="#5a2a25"/>
+  <path d="M400,584 L400,548 M400,656 L400,690" stroke="#b5473f" stroke-width="10"/>
+  <text x="20" y="708" font-family="sans-serif" font-size="13" fill="#7a6a5a">Esquema — períneo feminino, vista inferior (anterior em cima)</text>
+</svg>

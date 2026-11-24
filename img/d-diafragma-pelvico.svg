@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fbf7f0"/>
+  <!-- cintura pélvica (abertura superior) -->
+  <ellipse cx="400" cy="300" rx="300" ry="255" fill="#f8f1e4" stroke="#efe4cc" stroke-width="34"/>
+  <ellipse cx="400" cy="300" rx="317" ry="272" fill="none" stroke="#b9a77f" stroke-width="1.5"/>
+  <ellipse cx="400" cy="300" rx="283" ry="238" fill="none" stroke="#b9a77f" stroke-width="1.5"/>
+  <!-- sínfise -->
+  <rect x="380" y="38" width="40" height="40" rx="6" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <rect x="396" y="40" width="8" height="36" fill="#cfe0ea"/>
+  <!-- sacro -->
+  <path d="M300,520 C330,480 470,480 500,520 L470,575 L330,575 Z" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <g id="lado">
+    <!-- obturador interno -->
+    <path d="M150,150 C112,240 118,350 175,415 L212,392 C176,330 170,250 200,168 Z" fill="#a84a42" stroke="#7a3530" stroke-width="1.5"/>
+    <!-- arco tendíneo -->
+    <path d="M300,96 C240,150 205,280 205,400" fill="none" stroke="#e8dcc8" stroke-width="5"/>
+    <!-- piriforme -->
+    <path d="M195,452 C255,480 300,505 330,530 L318,556 C278,528 228,505 178,482 Z" fill="#9a4038" stroke="#7a3530" stroke-width="1.5"/>
+    <!-- coccígeo -->
+    <path d="M205,405 C265,425 330,452 392,470 L384,505 C318,486 255,462 200,438 Z" fill="#b85a50" stroke="#7a3530" stroke-width="1.5"/>
+    <!-- iliococcígeo -->
+    <path d="M210,392 C215,280 250,170 302,98 L332,104 C305,250 338,390 400,462 C320,452 260,430 210,392 Z" fill="#d97a6e" stroke="#9a4a40" stroke-width="1.5"/>
+    <!-- pubococcígeo -->
+    <path d="M332,104 L362,108 C350,250 362,330 400,360 L400,462 C338,390 305,250 332,104 Z" fill="#cf6a5f" stroke="#9a4a40" stroke-width="1.5"/>
+    <g stroke="#9a4a40" stroke-width="1" fill="none"><path d="M260,180 L330,420 M240,260 L350,440 M345,140 L380,400"/></g>
+  </g>
+  <use href="#lado" transform="translate(800,0) scale(-1,1)"/>
+  <!-- hiato + puborretal -->
+  <path d="M400,138 C368,138 360,200 364,252 C368,300 384,322 400,324 C416,322 432,300 436,252 C440,200 432,138 400,138 Z" fill="#f8f1e4"/>
+  <path d="M362,112 C342,250 352,334 400,348 C448,334 458,250 438,112" fill="none" stroke="#b5473f" stroke-width="22"/>
+  <!-- rafe anococcígea / cóccix -->
+  <path d="M400,350 L400,470" stroke="#e8dcc8" stroke-width="5"/>
+  <path d="M388,468 L412,468 L400,495 Z" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <!-- vísceras no hiato -->
+  <circle cx="400" cy="172" r="11" fill="#f1c3b3" stroke="#b56a5a" stroke-width="2"/>
+  <ellipse cx="400" cy="222" rx="30" ry="14" fill="#e3a196" stroke="#b86a5a" stroke-width="2"/>
+  <circle cx="400" cy="290" r="26" fill="#c77b6a" stroke="#8f4c3e" stroke-width="2"/>
+  <circle cx="400" cy="290" r="9" fill="#8f4c3e"/>
+  <text x="20" y="592" font-family="sans-serif" font-size="13" fill="#7a6a5a">Esquema — diafragma pélvico, vista superior (púbis em cima, sacro embaixo)</text>
+</svg>

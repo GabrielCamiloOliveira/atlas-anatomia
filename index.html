@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas de estudo — Sistema reprodutor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="logo">◎</span>
+    <div>
+      <h1>Atlas de estudo · Sistema reprodutor</h1>
+      <p class="sub">Listas SRF-01 e SRM-01 · aponte onde fica cada estrutura</p>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button data-view="explorar" class="active">Explorar</button>
+    <button data-view="aponte">Quiz: aponte</button>
+    <button data-view="nomeie">Quiz: nomeie</button>
+    <button data-view="lista">Checklist</button>
+  </nav>
+  <div class="seg" id="sysFilter">
+    <button data-sys="all" class="active">Todos</button>
+    <button data-sys="F">Feminino</button>
+    <button data-sys="M">Masculino</button>
+  </div>
+</header>
+
+<!-- ================= EXPLORAR ================= -->
+<main id="view-explorar" class="view active">
+  <aside class="side">
+    <input id="search" type="search" placeholder="Buscar estrutura…" autocomplete="off">
+    <div id="tree" class="tree"></div>
+  </aside>
+  <section class="center">
+    <div class="figbar" id="figbar"></div>
+    <div class="toolbar">
+      <label>Rótulos
+        <select id="labelMode">
+          <option value="sel">só o selecionado</option>
+          <option value="all">todos</option>
+          <option value="none">nenhum (treino)</option>
+        </select>
+      </label>
+      <label>Zoom <input id="zoom" type="range" min="1" max="3" step="0.25" value="1"></label>
+      <label class="edit-toggle"><input type="checkbox" id="editMode"> Editar pinos</label>
+    </div>
+    <div class="editbar hidden" id="editbar">
+      <span id="editHint">Selecione uma estrutura na lista e clique na imagem para posicionar o pino. Arraste pinos para ajustar.</span>
+      <button id="btnRemovePin">Remover pino desta figura</button>
+      <button id="btnExport">Exportar ajustes</button>
+      <label class="btnlike">Importar<input type="file" id="fileImport" accept=".json" hidden></label>
+      <button id="btnReset" class="danger">Restaurar padrão</button>
+    </div>
+    <div class="stagewrap" id="stagewrap">
+      <div class="stage" id="stage"><img id="figimg" alt=""><div class="pins" id="pins"></div></div>
+    </div>
+    <p class="fignote" id="fignote"></p>
+  </section>
+  <aside class="info" id="info">
+    <div class="empty">Escolha uma estrutura na lista ou clique num pino.</div>
+  </aside>
+</main>
+
+<!-- ================= QUIZ APONTE ================= -->
+<main id="view-aponte" class="view quiz">
+  <div class="quizhead">
+    <div>
+      <div class="qlabel">Onde está…</div>
+      <div class="qtarget" id="qaTarget">—</div>
+      <div class="qfig" id="qaFig"></div>
+    </div>
+    <div class="score"><span id="qaScore">0 / 0</span><small>acertos</small></div>
+  </div>
+  <div class="qopts">
+    <label><input type="checkbox" id="qaOnlyFotos"> só fotos dos modelos</label>
+    <label><input type="checkbox" id="qaOnlySchemes"> só esquemas</label>
+    <label><input type="checkbox" id="qaWeak" checked> priorizar o que errei</label>
+  </div>
+  <div class="stagewrap quizstage"><div class="stage" id="qaStage"><img id="qaImg" alt=""><div class="pins" id="qaPins"></div></div></div>
+  <div class="feedback" id="qaFeedback">Clique na imagem onde você acha que está a estrutura.</div>
+  <div class="qbtns"><button id="qaSkip">Mostrar resposta</button><button id="qaNext" class="primary">Próxima →</button></div>
+</main>
+
+<!-- ================= QUIZ NOMEIE ================= -->
+<main id="view-nomeie" class="view quiz">
+  <div class="quizhead">
+    <div>
+      <div class="qlabel">Que estrutura é o pino destacado?</div>
+      <div class="qfig" id="qnFig"></div>
+    </div>
+    <div class="score"><span id="qnScore">0 / 0</span><small>acertos</small></div>
+  </div>
+  <div class="stagewrap quizstage"><div class="stage" id="qnStage"><img id="qnImg" alt=""><div class="pins" id="qnPins"></div></div></div>
+  <div class="choices" id="qnChoices"></div>
+  <div class="feedback" id="qnFeedback"></div>
+  <div class="qbtns"><button id="qnNext" class="primary">Próxima →</button></div>
+</main>
+
+<!-- ================= CHECKLIST ================= -->
+<main id="view-lista" class="view lista">
+  <div class="progress"><div class="bar"><div id="progBar"></div></div><span id="progTxt"></span></div>
+  <p class="hint">Marque ✓ o que você já sabe apontar. Os números mostram acertos/erros nos quizzes. Clique no nome para abrir no Explorar.</p>
+  <div id="checklist"></div>
+</main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

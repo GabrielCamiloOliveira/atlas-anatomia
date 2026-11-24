@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fbf7f0"/>
+  <defs>
+    <g id="fimb">
+      <path d="M0,0 c-8,6 -14,14 -12,22 M0,0 c-14,2 -24,10 -26,18 M0,0 c-4,10 -2,20 4,26 M0,0 c4,10 10,18 18,20 M0,0 c-16,-4 -28,0 -32,6" fill="none" stroke="#d9867a" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <!-- ligamento largo (translúcido) -->
+  <path d="M300,150 L230,140 C150,135 80,150 40,170 L40,470 L360,430 L330,300 Z" fill="#a9c4e0" fill-opacity="0.35" stroke="#7f9fc4" stroke-width="1.5"/>
+  <path d="M500,150 L570,140 C650,135 720,150 760,170 L760,470 L440,430 L470,300 Z" fill="#a9c4e0" fill-opacity="0.35" stroke="#7f9fc4" stroke-width="1.5"/>
+  <!-- ligamento redondo (anterior, tracejado) -->
+  <path d="M480,200 C560,260 640,360 720,470" fill="none" stroke="#5a8a5a" stroke-width="5" stroke-dasharray="9 6"/>
+  <path d="M320,200 C240,260 160,360 80,470" fill="none" stroke="#5a8a5a" stroke-width="5" stroke-dasharray="9 6"/>
+  <!-- ligamento uterossacro (posterior) -->
+  <path d="M442,372 C480,420 520,450 575,480" fill="none" stroke="#7a6a9a" stroke-width="6" stroke-dasharray="10 6"/>
+  <path d="M358,372 C320,420 280,450 225,480" fill="none" stroke="#7a6a9a" stroke-width="6" stroke-dasharray="10 6"/>
+  <!-- vagina (corte coronal) -->
+  <path d="M328,388 C328,376 472,376 472,388 L458,585 L342,585 Z" fill="#e3a196" stroke="#b86a5a" stroke-width="3"/>
+  <path d="M344,396 L456,396 L442,585 L358,585 Z" fill="#fbe9e4"/>
+  <g stroke="#c9786c" stroke-width="2.5" fill="none">
+    <path d="M346,440 q6,-5 12,0 M347,470 q6,-5 12,0 M349,500 q6,-5 12,0 M351,530 q6,-5 12,0 M353,560 q6,-5 12,0"/>
+    <path d="M442,440 q6,-5 12,0 M441,470 q6,-5 12,0 M439,500 q6,-5 12,0 M437,530 q6,-5 12,0 M435,560 q6,-5 12,0"/>
+  </g>
+  <!-- útero (corte coronal) -->
+  <path d="M300,150 C300,92 500,92 500,150 L470,300 C465,320 445,330 440,335 L440,418 C440,426 360,426 360,418 L360,335 C355,330 335,320 330,300 Z" fill="#e7a08f" stroke="#b86a5a" stroke-width="6"/>
+  <path d="M325,145 L475,145 L412,302 L388,302 Z" fill="#c9566a"/>
+  <path d="M352,160 L448,160 L403,288 L397,288 Z" fill="#f5d7d0"/>
+  <path d="M391,300 L409,300 L413,421 L387,421 Z" fill="#f5d7d0"/>
+  <path d="M392,320 l8,8 l8,-8 M392,342 l8,8 l8,-8 M392,364 l8,8 l8,-8 M392,386 l8,8 l8,-8" fill="none" stroke="#b86a5a" stroke-width="2"/>
+  <!-- tubas uterinas -->
+  <g id="tubaE">
+    <path d="M345,155 L302,150" stroke="#f5d7d0" stroke-width="5" stroke-dasharray="4 3"/>
+    <path d="M300,150 C270,145 245,140 225,140" fill="none" stroke="#d9867a" stroke-width="12" stroke-linecap="round"/>
+    <path d="M225,140 C170,138 130,150 108,185 C95,210 95,240 100,262" fill="none" stroke="#d9867a" stroke-width="24" stroke-linecap="round"/>
+    <path d="M100,262 L96,280" stroke="#d9867a" stroke-width="34" stroke-linecap="round"/>
+    <use href="#fimb" x="98" y="292"/>
+  </g>
+  <g transform="translate(800,0) scale(-1,1)">
+    <path d="M345,155 L302,150" stroke="#f5d7d0" stroke-width="5" stroke-dasharray="4 3"/>
+    <path d="M300,150 C270,145 245,140 225,140" fill="none" stroke="#d9867a" stroke-width="12" stroke-linecap="round"/>
+    <path d="M225,140 C170,138 130,150 108,185 C95,210 95,240 100,262" fill="none" stroke="#d9867a" stroke-width="24" stroke-linecap="round"/>
+    <path d="M225,140 C170,138 130,150 108,185 C95,210 95,240 100,262" fill="none" stroke="#fbe9e4" stroke-width="8" stroke-linecap="round"/>
+    <path d="M100,262 L96,280" stroke="#d9867a" stroke-width="34" stroke-linecap="round"/>
+    <use href="#fimb" x="98" y="292"/>
+  </g>
+  <!-- ligamentos do ovário -->
+  <path d="M182,366 C230,300 280,220 312,188" fill="none" stroke="#c9a27a" stroke-width="9" stroke-linecap="round"/>
+  <path d="M618,366 C570,300 520,220 488,188" fill="none" stroke="#c9a27a" stroke-width="9" stroke-linecap="round"/>
+  <path d="M158,272 C120,230 80,190 30,160" fill="none" stroke="#c9a27a" stroke-width="14" stroke-linecap="round"/>
+  <path d="M158,272 C120,230 80,190 30,160" fill="none" stroke="#c0392b" stroke-width="2"/>
+  <path d="M642,272 C680,230 720,190 770,160" fill="none" stroke="#c9a27a" stroke-width="14" stroke-linecap="round"/>
+  <path d="M642,272 C680,230 720,190 770,160" fill="none" stroke="#c0392b" stroke-width="2"/>
+  <!-- mesovário (direito) -->
+  <path d="M598,290 C585,300 582,345 598,360 L630,350 L630,300 Z" fill="#b9cde3" stroke="#7f9fc4" stroke-width="1.5"/>
+  <!-- ovário direito (íntegro) -->
+  <ellipse cx="630" cy="320" rx="32" ry="52" transform="rotate(-20 630 320)" fill="#f0d6c8" stroke="#b88a78" stroke-width="3"/>
+  <!-- ovário esquerdo (seccionado) -->
+  <g transform="rotate(20 170 320)">
+    <ellipse cx="170" cy="320" rx="34" ry="54" fill="#f6dccd" stroke="#ffffff" stroke-width="6"/>
+    <ellipse cx="170" cy="320" rx="34" ry="54" fill="none" stroke="#b88a78" stroke-width="2"/>
+    <ellipse cx="174" cy="322" rx="15" ry="30" fill="#e2a08e"/>
+    <circle cx="150" cy="290" r="5" fill="#fff" stroke="#c88"/>
+    <circle cx="146" cy="318" r="7" fill="#fff" stroke="#c88"/>
+    <circle cx="152" cy="350" r="5" fill="#fff" stroke="#c88"/>
+    <circle cx="168" cy="276" r="4" fill="#fff" stroke="#c88"/>
+    <circle cx="160" cy="364" r="6" fill="#fff" stroke="#c88"/>
+    <path d="M204,326 C190,326 182,322 176,316 M204,330 C190,334 182,334 176,334" fill="none" stroke="#c0392b" stroke-width="2"/>
+    <path d="M204,328 C192,330 184,328 178,325" fill="none" stroke="#2e5fa8" stroke-width="2"/>
+  </g>
+  <text x="20" y="588" font-family="sans-serif" font-size="13" fill="#7a6a5a">Esquema — vista posterior (corte coronal). Esquerda da paciente = esquerda da tela</text>
+</svg>

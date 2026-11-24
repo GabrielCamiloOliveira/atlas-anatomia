@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fbf7f0"/>
+  <!-- ===== corte transversal ===== -->
+  <circle cx="200" cy="300" r="140" fill="#efc9a8" stroke="#c99b7a" stroke-width="3"/>
+  <circle cx="200" cy="300" r="126" fill="#f8ecd6"/>
+  <circle cx="200" cy="300" r="110" fill="#e8dcc8" stroke="#c9b9a0" stroke-width="2"/>
+  <circle cx="155" cy="265" r="52" fill="#b9607a" stroke="#ffffff" stroke-width="7"/>
+  <circle cx="245" cy="265" r="52" fill="#b9607a" stroke="#ffffff" stroke-width="7"/>
+  <rect x="196" y="220" width="8" height="85" fill="#ffffff"/>
+  <circle cx="155" cy="268" r="5" fill="#c0392b"/><circle cx="245" cy="268" r="5" fill="#c0392b"/>
+  <circle cx="200" cy="375" r="34" fill="#c98a9a" stroke="#ffffff" stroke-width="5"/>
+  <ellipse cx="200" cy="375" rx="13" ry="3.5" fill="#5a2a35"/>
+  <circle cx="200" cy="200" r="7" fill="#2e5fa8"/>
+  <circle cx="184" cy="205" r="4" fill="#c0392b"/><circle cx="216" cy="205" r="4" fill="#c0392b"/>
+  <text x="120" y="470" font-family="sans-serif" font-size="13" fill="#7a6a5a">Corte transversal do corpo</text>
+  <!-- ===== vista inferior (ventral) das partes eréteis ===== -->
+  <!-- ramos ísquio-púbicos -->
+  <path d="M600,300 C560,240 520,170 480,90 M600,300 C640,240 680,170 720,90" fill="none" stroke="#efe4cc" stroke-width="26" stroke-linecap="round"/>
+  <path d="M600,300 C560,240 520,170 480,90 M600,300 C640,240 680,170 720,90" fill="none" stroke="#b9a77f" stroke-width="1.5"/>
+  <ellipse cx="474" cy="80" rx="22" ry="16" fill="#e6d6b0" stroke="#b9a77f" stroke-width="2"/>
+  <ellipse cx="726" cy="80" rx="22" ry="16" fill="#e6d6b0" stroke="#b9a77f" stroke-width="2"/>
+  <!-- ramos (crura) -->
+  <path d="M500,110 C530,180 565,250 588,330" fill="none" stroke="#b9607a" stroke-width="20" stroke-linecap="round"/>
+  <path d="M700,110 C670,180 635,250 612,330" fill="none" stroke="#b9607a" stroke-width="20" stroke-linecap="round"/>
+  <!-- bulbo + corpo esponjoso -->
+  <ellipse cx="600" cy="200" rx="28" ry="50" fill="#c98a9a" stroke="#9a5a6a" stroke-width="2"/>
+  <!-- corpo do pênis -->
+  <path d="M570,330 L630,330 L628,490 L572,490 Z" fill="#b9607a" stroke="#8a3f55" stroke-width="2"/>
+  <path d="M586,240 L614,240 L614,500 L586,500 Z" fill="#c98a9a" stroke="#9a5a6a" stroke-width="2"/>
+  <!-- prepúcio retraído -->
+  <rect x="562" y="486" width="76" height="16" rx="7" fill="#efc9a8" stroke="#c99b7a" stroke-width="2"/>
+  <!-- glande -->
+  <ellipse cx="600" cy="545" rx="44" ry="42" fill="#e8a090" stroke="#a86060" stroke-width="2"/>
+  <path d="M558,520 C575,505 625,505 642,520" fill="none" stroke="#a86060" stroke-width="5"/>
+  <path d="M600,506 L600,572" stroke="#a86060" stroke-width="3"/>
+  <ellipse cx="600" cy="580" rx="3" ry="6" fill="#5a2a35"/>
+  <text x="470" y="20" font-family="sans-serif" font-size="13" fill="#7a6a5a">Vista inferior (ventral) — raiz em cima</text>
+</svg>

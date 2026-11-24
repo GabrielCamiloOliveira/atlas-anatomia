@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fbf7f0"/>
+  <defs>
+    <path id="coil" d="M0,0 c4,-9 9,9 13,0 s9,9 13,0 s9,9 13,0 M2,10 c4,-9 9,9 13,0 s9,9 13,0 s9,9 13,0 M4,20 c4,-9 9,9 13,0 s9,9 13,0" fill="none" stroke="#c98f7a" stroke-width="2.2" stroke-linecap="round"/>
+  </defs>
+  <!-- túnica vaginal -->
+  <ellipse cx="340" cy="320" rx="172" ry="222" fill="#7fa6c8" fill-opacity="0.10" stroke="#5f8ab4" stroke-width="3" stroke-dasharray="10 6"/>
+  <!-- testículo (parênquima) -->
+  <ellipse cx="340" cy="320" rx="150" ry="200" fill="#f4e4dc"/>
+  <!-- septos -->
+  <g stroke="#e8e8ee" stroke-width="5" stroke-linecap="round">
+    <path d="M455,270 L289,508 M455,270 L234,461 M455,270 L199,388 M455,270 L191,303 M455,270 L210,220 M455,270 L254,156 M455,270 L314,123 M455,270 L366,517"/>
+  </g>
+  <g stroke="#b9b9c6" stroke-width="1"><path d="M455,270 L289,508 M455,270 L234,461 M455,270 L199,388 M455,270 L191,303 M455,270 L210,220 M455,270 L254,156 M455,270 L314,123 M455,270 L366,517"/></g>
+  <!-- túbulos seminíferos -->
+  <use href="#coil" x="320" y="392"/>
+  <use href="#coil" x="292" y="355"/>
+  <use href="#coil" x="278" y="306"/>
+  <use href="#coil" x="282" y="254"/>
+  <use href="#coil" x="302" y="208"/>
+  <use href="#coil" x="334" y="178"/>
+  <use href="#coil" x="356" y="410"/>
+  <use href="#coil" x="232" y="300"/>
+  <use href="#coil" x="250" y="380"/>
+  <use href="#coil" x="250" y="210"/>
+  <!-- túbulos retos -->
+  <g stroke="#a8744a" stroke-width="2.5" stroke-linecap="round"><path d="M405,250 L440,262 M408,280 L440,276 M410,310 L440,290 M402,225 L440,252"/></g>
+  <!-- túnica albugínea -->
+  <ellipse cx="340" cy="320" rx="150" ry="200" fill="none" stroke="#9aa4b0" stroke-width="16"/>
+  <ellipse cx="340" cy="320" rx="150" ry="200" fill="none" stroke="#f8f8fb" stroke-width="11"/>
+  <!-- mediastino / rede testicular -->
+  <ellipse cx="458" cy="268" rx="20" ry="70" fill="#e8d6b0" stroke="#b99a60" stroke-width="2"/>
+  <path d="M446,220 L470,240 L446,260 L470,280 L446,300 L470,318 M470,220 L446,240 L470,260 L446,280 L470,300 L446,318" fill="none" stroke="#b99a60" stroke-width="1.5"/>
+  <!-- epidídimo -->
+  <path d="M500,140 C540,110 600,130 600,180 C600,230 580,262 585,320 C590,400 580,460 545,505 C520,525 495,510 505,490 C530,450 545,400 540,320 C535,262 520,222 495,196 C480,180 480,155 500,140 Z" fill="#dcb67a" stroke="#a07a3a" stroke-width="2.5"/>
+  <path d="M525,150 c10,6 -10,12 0,18 s-10,12 0,18 s-10,12 0,18 M572,170 c8,8 -12,10 -2,18 s-10,12 0,18 M565,240 c8,8 -12,10 -2,18 s-10,12 0,18 s-10,12 0,18 s-10,12 0,18 s-10,12 0,18 s-10,12 0,18 M555,400 c8,8 -12,10 -2,18 s-10,12 0,18 s-10,12 0,18" fill="none" stroke="#9a6a2a" stroke-width="2"/>
+  <!-- ductos eferentes -->
+  <g fill="none" stroke="#b9842e" stroke-width="2.5">
+    <path d="M466,212 c8,-8 14,-2 20,-10 s10,-8 20,-12"/>
+    <path d="M472,228 c8,-8 16,-4 22,-12 s12,-8 22,-12"/>
+    <path d="M474,246 c10,-8 18,-6 26,-14 s12,-8 24,-10"/>
+  </g>
+  <!-- ducto deferente -->
+  <path d="M540,505 C580,522 612,492 616,440 L626,96" fill="none" stroke="#8a7a5a" stroke-width="17" stroke-linecap="round"/>
+  <path d="M540,505 C580,522 612,492 616,440 L626,96" fill="none" stroke="#f5efdc" stroke-width="12" stroke-linecap="round"/>
+  <text x="20" y="588" font-family="sans-serif" font-size="13" fill="#7a6a5a">Esquema — corte sagital do testículo e epidídimo (posterior à direita)</text>
+</svg>

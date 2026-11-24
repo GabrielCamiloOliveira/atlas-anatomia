@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 720">
+  <rect width="800" height="720" fill="#f6e2cf"/>
+  <!-- referências ósseas -->
+  <rect x="380" y="18" width="40" height="22" rx="6" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <circle cx="190" cy="560" r="20" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <circle cx="610" cy="560" r="20" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <path d="M390,690 L410,690 L400,712 Z" fill="#efe4cc" stroke="#b9a77f" stroke-width="2"/>
+  <!-- trígonos -->
+  <path d="M400,40 L190,560 L610,560 Z" fill="#7fa6c8" fill-opacity="0.10" stroke="#4a6fa5" stroke-width="2" stroke-dasharray="8 6"/>
+  <path d="M190,560 L400,700 L610,560" fill="#c8a07f" fill-opacity="0.12" stroke="#4a6fa5" stroke-width="2" stroke-dasharray="8 6"/>
+  <!-- monte pubiano -->
+  <ellipse cx="400" cy="95" rx="150" ry="68" fill="#ecc5a4" stroke="#d2a684" stroke-width="2"/>
+  <!-- lábios maiores -->
+  <path d="M400,135 C290,140 255,300 285,450 C305,515 370,525 400,515 C430,525 495,515 515,450 C545,300 510,140 400,135 Z" fill="#e6b08e" stroke="#c99b7a" stroke-width="3"/>
+  <path d="M400,165 C330,175 315,300 335,440 C350,490 385,500 400,498 C415,500 450,490 465,440 C485,300 470,175 400,165 Z" fill="#eec2a8"/>
+  <!-- lábios menores -->
+  <path d="M400,195 C350,205 336,320 352,440 C360,466 385,472 400,464 C415,472 440,466 448,440 C464,320 450,205 400,195 Z" fill="#d97f7a" stroke="#b86060" stroke-width="2"/>
+  <!-- vestíbulo -->
+  <path d="M400,236 C371,246 363,320 373,425 C381,447 392,452 400,450 C408,452 419,447 427,425 C437,320 429,246 400,236 Z" fill="#f2b9ad"/>
+  <!-- prepúcio e glande do clitóris -->
+  <path d="M368,206 C374,170 426,170 432,206 C420,196 380,196 368,206 Z" fill="#c96a6a" stroke="#a85050" stroke-width="2"/>
+  <circle cx="400" cy="214" r="10" fill="#b4475e"/>
+  <!-- óstio uretral externo + parauretrais -->
+  <ellipse cx="400" cy="262" rx="5" ry="8" fill="#7a3040"/>
+  <circle cx="386" cy="272" r="2.6" fill="#7a3040"/>
+  <circle cx="414" cy="272" r="2.6" fill="#7a3040"/>
+  <!-- óstio da vagina + carúnculas -->
+  <ellipse cx="400" cy="360" rx="25" ry="44" fill="#7a3040"/>
+  <g fill="#e8a0a0" stroke="#b86060" stroke-width="1">
+    <circle cx="375" cy="345" r="5"/><circle cx="374" cy="372" r="5"/><circle cx="382" cy="396" r="4.5"/>
+    <circle cx="425" cy="345" r="5"/><circle cx="426" cy="372" r="5"/><circle cx="418" cy="396" r="4.5"/>
+    <circle cx="400" cy="404" r="4"/>
+  </g>
+  <!-- óstios das gl. vestibulares maiores -->
+  <circle cx="378" cy="414" r="3" fill="#7a3040"/>
+  <circle cx="422" cy="414" r="3" fill="#7a3040"/>
+  <!-- fossa do vestíbulo + frênulo -->
+  <ellipse cx="400" cy="436" rx="13" ry="8" fill="#e08a86"/>
+  <path d="M384,456 C392,462 408,462 416,456" fill="none" stroke="#a85050" stroke-width="3"/>
+  <!-- ânus -->
+  <circle cx="400" cy="640" r="15" fill="#8a4a40"/>
+  <g stroke="#8a4a40" stroke-width="2"><path d="M400,615 L400,622 M400,658 L400,665 M375,640 L382,640 M418,640 L425,640 M383,623 L388,628 M412,652 L417,657 M417,623 L412,628 M383,657 L388,652"/></g>
+  <!-- corpo do períneo -->
+  <path d="M400,548 L414,562 L400,576 L386,562 Z" fill="#e8d8c0" stroke="#b9a77f" stroke-width="1.5"/>
+  <text x="20" y="708" font-family="sans-serif" font-size="13" fill="#7a6a5a">Esquema — vista inferior (anterior em cima)</text>
+</svg>
