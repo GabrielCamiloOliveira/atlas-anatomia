@@ -510,19 +510,22 @@
   function renderPranchas() {
     renderPranchaList();
     const p = PRANCHAS.find(x => x.id === pr.cur); if (!p) return;
-    const fig = figById[p.fig], pins = pinsOf(fig);
+    const fig = figById[p.fig];
+    // fotos: pinos em % → corrige proporção real da imagem (ar = largura/altura)
+    const sx = fig.tipo === "foto" ? (p.ar || 1) : 1, FW = fig.w * sx;
+    const pins = Object.fromEntries(Object.entries(pinsOf(fig)).map(([k, v]) => [k, [v[0] * sx, v[1]]]));
     const ids = p.ids.filter(i => pins[i] && byId[i]);
     $("#prTitle").textContent = p.t;
     $("#prSub").textContent = p.sub || "";
 
     // recorte
-    let [cx, cy, cw, ch] = [0, 0, fig.w, fig.h];
+    let [cx, cy, cw, ch] = [0, 0, FW, fig.h];
     if (Array.isArray(p.crop)) [cx, cy, cw, ch] = p.crop;
     else if (p.crop === "auto") {
       const xs = ids.map(i => pins[i][0]), ys = ids.map(i => pins[i][1]);
       let x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
-      const pad = Math.max(x1 - x0, y1 - y0) * 0.18 + fig.w * 0.04;
-      x0 = Math.max(0, x0 - pad); y0 = Math.max(0, y0 - pad); x1 = Math.min(fig.w, x1 + pad); y1 = Math.min(fig.h, y1 + pad);
+      const pad = Math.max(x1 - x0, y1 - y0) * 0.18 + FW * 0.04;
+      x0 = Math.max(0, x0 - pad); y0 = Math.max(0, y0 - pad); x1 = Math.min(FW, x1 + pad); y1 = Math.min(fig.h, y1 + pad);
       [cx, cy, cw, ch] = [x0, y0, x1 - x0, y1 - y0];
     }
 
@@ -582,7 +585,7 @@
     let h = `<defs><clipPath id="prClip"><rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="${fs * 0.6}"/></clipPath>
       <marker id="prArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="${ar}" markerHeight="${ar}" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2b2622"/></marker></defs>
       <rect x="${vx}" y="${vy}" width="${vw}" height="${vh}" fill="#fff"/>
-      <image href="${fig.src}" x="0" y="0" width="${fig.w}" height="${fig.h}" clip-path="url(#prClip)" preserveAspectRatio="none"/>
+      <image href="${fig.src}" x="0" y="0" width="${FW}" height="${fig.h}" clip-path="url(#prClip)" preserveAspectRatio="none"/>
       <rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="${fs * 0.6}" fill="none" stroke="#e4dbcf" stroke-width="${sw}"/>`;
     const lbl = (side) => (it) => {
       const left = side === "L";
@@ -592,8 +595,9 @@
       const hide = pr.treino && !pr.shown.has(it.id);
       const txt = hide ? [`${it.k}. ?`] : it.lines.map((l, j) => (j === 0 ? `${it.k}. ` : "") + l);
       h += `<g class="prlab${it.ref ? " ref" : ""}${hide ? " hid" : ""}" data-id="${it.id}">
+        ${sx !== 1 || fig.tipo === "foto" ? `<line class="halo" x1="${ax}" y1="${ty}" x2="${it.px}" y2="${it.py}" stroke-width="${sw * 4}"/>` : ""}
         <line x1="${ax}" y1="${ty}" x2="${it.px}" y2="${it.py}" stroke-width="${sw * 1.3}" marker-end="url(#prArrow)"/>
-        <circle cx="${it.px}" cy="${it.py}" r="${fs * 0.22}"/>
+        <circle cx="${it.px}" cy="${it.py}" r="${fs * (fig.tipo === "foto" ? 0.32 : 0.22)}" ${fig.tipo === "foto" ? `stroke="#fff" stroke-width="${sw * 1.5}"` : ""}/>
         <rect class="hit" x="${left ? tx - colW : tx}" y="${it.y}" width="${colW}" height="${it.h}" fill="transparent"/>
         <text x="${tx}" y="${ty - (txt.length - 1) * lh() / 2}" font-size="${fs}" text-anchor="${left ? "end" : "start"}" dominant-baseline="middle">${
           txt.map((l, j) => `<tspan x="${tx}" dy="${j ? lh() : 0}">${esc(l)}</tspan>`).join("")}</text></g>`;
