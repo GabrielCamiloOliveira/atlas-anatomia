@@ -41,6 +41,7 @@
     if (v === "aponte" && !qa.cur) qaNew();
     if (v === "nomeie" && !qn.cur) qnNew();
     if (v === "lista") renderChecklist();
+    if (v === "pranchas") renderPranchas();
     if (v === "explorar") renderAll();
   }
   $$("#sysFilter button").forEach(b => b.onclick = () => {
@@ -465,6 +466,165 @@
     $("#progBar").style.width = (list.length ? k / list.length * 100 : 0) + "%";
     $("#progTxt").textContent = `${k} de ${list.length} marcadas como “sei”`;
   }
+
+  // ---------- PRANCHAS ----------
+  const pr = { cur: null, treino: false, shown: new Set() };
+  const NS = "http://www.w3.org/2000/svg";
+  const esc = t => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const prInSys = p => st.sys === "all" || p.sys === st.sys || p.sys === "FM";
+
+  function wrapLabel(t, max = 24) {
+    const words = t.split(" "), lines = [""];
+    for (const w of words) {
+      const cur = lines[lines.length - 1];
+      if (cur && (cur + " " + w).length > max) lines.push(w); else lines[lines.length - 1] = cur ? cur + " " + w : w;
+    }
+    return lines;
+  }
+
+  // distribui rótulos verticalmente sem sobreposição, o mais perto possível do pino
+  function spread(items, top, bottom, keep) {
+    if (!keep) items.sort((a, b) => a.py - b.py);
+    let y = top;
+    for (const it of items) { it.y = Math.max(it.py - it.h / 2, y); y = it.y + it.h; }
+    let lim = bottom;
+    for (let i = items.length - 1; i >= 0; i--) { const it = items[i]; if (it.y + it.h > lim) it.y = lim - it.h; lim = it.y; }
+    y = top;
+    for (const it of items) { if (it.y < y) it.y = y; y = it.y + it.h; }
+  }
+
+  function renderPranchaList() {
+    const box = $("#prList"); box.innerHTML = "";
+    const list = PRANCHAS.filter(prInSys);
+    if (!list.some(p => p.id === pr.cur)) pr.cur = list[0]?.id;
+    for (const p of list) {
+      const b = document.createElement("button");
+      b.className = "prcard" + (p.id === pr.cur ? " active" : "");
+      const tag = p.sys === "F" ? "Feminino" : p.sys === "M" ? "Masculino" : "Comum";
+      b.innerHTML = `<span class="prsys sys${p.sys}">${tag}</span><b>${p.t}</b><small>${p.ids.length} estruturas</small>`;
+      b.onclick = () => { pr.cur = p.id; pr.shown.clear(); renderPranchas(); };
+      box.appendChild(b);
+    }
+  }
+
+  function renderPranchas() {
+    renderPranchaList();
+    const p = PRANCHAS.find(x => x.id === pr.cur); if (!p) return;
+    const fig = figById[p.fig], pins = pinsOf(fig);
+    const ids = p.ids.filter(i => pins[i] && byId[i]);
+    $("#prTitle").textContent = p.t;
+    $("#prSub").textContent = p.sub || "";
+
+    // recorte
+    let [cx, cy, cw, ch] = [0, 0, fig.w, fig.h];
+    if (Array.isArray(p.crop)) [cx, cy, cw, ch] = p.crop;
+    else if (p.crop === "auto") {
+      const xs = ids.map(i => pins[i][0]), ys = ids.map(i => pins[i][1]);
+      let x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+      const pad = Math.max(x1 - x0, y1 - y0) * 0.18 + fig.w * 0.04;
+      x0 = Math.max(0, x0 - pad); y0 = Math.max(0, y0 - pad); x1 = Math.min(fig.w, x1 + pad); y1 = Math.min(fig.h, y1 + pad);
+      [cx, cy, cw, ch] = [x0, y0, x1 - x0, y1 - y0];
+    }
+
+    // tipografia proporcional ao recorte
+    const n = ids.length;
+    let fs = ch * 0.03;
+    const lh = () => fs * 1.22, gapY = () => fs * 0.55;
+    const mid = cx + cw / 2;
+    const items = ids.map((id, k) => ({ id, k: k + 1, px: pins[id][0], py: pins[id][1], lines: wrapLabel(byId[id].n), ref: !!byId[id].ref }));
+    let L = items.filter(i => i.px < mid), R = items.filter(i => i.px >= mid);
+    // equilibra os lados (move os pinos mais centrais)
+    const cap = Math.ceil(n * 0.6);
+    while (L.length > cap) { L.sort((a, b) => b.px - a.px); R.push(L.shift()); }
+    while (R.length > cap) { R.sort((a, b) => a.px - b.px); L.push(R.shift()); }
+    const need = s => s.reduce((a, i) => a + i.lines.length * lh() + gapY(), 0);
+    // se não couber na altura, reduz a fonte
+    const avail = ch * 1.15;
+    while (Math.max(need(L), need(R)) > avail && fs > ch * 0.018) fs *= 0.94;
+    for (const it of items) it.h = it.lines.length * lh() + gapY();
+
+    const colW = Math.max(...items.map(i => Math.max(...i.lines.map(l => l.length)))) * fs * 0.53 + fs;
+    const lead = cw * 0.06 + fs * 2;               // espaço para as setas entre rótulo e figura
+    const vx = cx - colW - lead, vw = cw + 2 * (colW + lead);
+    const extra = (avail - ch) / 2;
+    const vy = cy - extra - fs, vh = ch + 2 * extra + 2 * fs;
+    // posiciona e desfaz cruzamentos de setas trocando a ordem dos rótulos
+    const top = vy + fs * 0.5, bot = vy + vh - fs * 0.5;
+    const anchorY = it => it.y + it.h / 2;
+    const ori = (x1, y1, x2, y2, x3, y3) => Math.sign((x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1));
+    const cross = (a, b, ax) => {
+      const ya = anchorY(a), yb = anchorY(b);
+      return ori(ax, ya, a.px, a.py, ax, yb) * ori(ax, ya, a.px, a.py, b.px, b.py) < 0 &&
+             ori(ax, yb, b.px, b.py, ax, ya) * ori(ax, yb, b.px, b.py, a.px, a.py) < 0;
+    };
+    for (const [side, ax] of [[L, cx - lead], [R, cx + cw + lead]]) {
+      spread(side, top, bot);
+      for (let pass = 0; pass < 40; pass++) {
+        let sw = false;
+        for (let i = 0; i < side.length - 1 && !sw; i++) for (let j = i + 1; j < side.length; j++) {
+          if (cross(side[i], side[j], ax)) {
+            const before = side.slice(); [side[i], side[j]] = [side[j], side[i]];
+            spread(side, top, bot, true);
+            const cnt = () => { let c = 0; for (let a = 0; a < side.length; a++) for (let b = a + 1; b < side.length; b++) if (cross(side[a], side[b], ax)) c++; return c; };
+            const nNew = cnt(); side.splice(0, side.length, ...before); spread(side, top, bot, true); const nOld = cnt();
+            if (nNew < nOld) { [side[i], side[j]] = [side[j], side[i]]; spread(side, top, bot, true); sw = true; break; }
+          }
+        }
+        if (!sw) break;
+      }
+    }
+    // numeração em ordem de leitura: esquerda de cima p/ baixo, depois direita
+    [...L, ...R].forEach((it, k) => it.k = k + 1);
+
+    const svg = $("#prSvg");
+    svg.setAttribute("viewBox", `${vx} ${vy} ${vw} ${vh}`);
+    const sw = fs * 0.09, ar = fs * 0.55;
+    let h = `<defs><clipPath id="prClip"><rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="${fs * 0.6}"/></clipPath>
+      <marker id="prArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="${ar}" markerHeight="${ar}" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2b2622"/></marker></defs>
+      <rect x="${vx}" y="${vy}" width="${vw}" height="${vh}" fill="#fff"/>
+      <image href="${fig.src}" x="0" y="0" width="${fig.w}" height="${fig.h}" clip-path="url(#prClip)" preserveAspectRatio="none"/>
+      <rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="${fs * 0.6}" fill="none" stroke="#e4dbcf" stroke-width="${sw}"/>`;
+    const lbl = (side) => (it) => {
+      const left = side === "L";
+      const tx = left ? cx - lead : cx + cw + lead;          // borda interna do rótulo
+      const ty = it.y + gapY() / 2 + it.lines.length * lh() / 2;
+      const ax = left ? tx + fs * 0.35 : tx - fs * 0.35;
+      const hide = pr.treino && !pr.shown.has(it.id);
+      const txt = hide ? [`${it.k}. ?`] : it.lines.map((l, j) => (j === 0 ? `${it.k}. ` : "") + l);
+      h += `<g class="prlab${it.ref ? " ref" : ""}${hide ? " hid" : ""}" data-id="${it.id}">
+        <line x1="${ax}" y1="${ty}" x2="${it.px}" y2="${it.py}" stroke-width="${sw * 1.3}" marker-end="url(#prArrow)"/>
+        <circle cx="${it.px}" cy="${it.py}" r="${fs * 0.22}"/>
+        <rect class="hit" x="${left ? tx - colW : tx}" y="${it.y}" width="${colW}" height="${it.h}" fill="transparent"/>
+        <text x="${tx}" y="${ty - (txt.length - 1) * lh() / 2}" font-size="${fs}" text-anchor="${left ? "end" : "start"}" dominant-baseline="middle">${
+          txt.map((l, j) => `<tspan x="${tx}" dy="${j ? lh() : 0}">${esc(l)}</tspan>`).join("")}</text></g>`;
+    };
+    L.forEach(lbl("L")); R.forEach(lbl("R"));
+    svg.innerHTML = h;
+
+    $$(".prlab", svg).forEach(g => {
+      const id = g.dataset.id;
+      g.onclick = () => {
+        if (pr.treino && !pr.shown.has(id)) { pr.shown.add(id); renderPranchas(); return; }
+        showPrInfo(id);
+      };
+      g.onmouseenter = () => g.classList.add("hov");
+      g.onmouseleave = () => g.classList.remove("hov");
+    });
+    $("#prCount").textContent = `${ids.length} estruturas · ${pr.treino ? `${pr.shown.size} reveladas` : "clique num nome para ver onde fica e como achar"}`;
+    $("#prInfo").innerHTML = "";
+  }
+
+  function showPrInfo(id) {
+    const s = byId[id];
+    $("#prInfo").innerHTML = `<div class="prinfo"><b>${s.n}</b>${s.ref ? ` <em>(referência)</em>` : ""}
+      <p><span>Onde fica:</span> ${s.onde}</p><p><span>No modelo:</span> ${s.dica}</p>
+      <button id="prGo">Abrir no Explorar →</button></div>`;
+    $("#prGo").onclick = () => { setView("explorar"); select(id); };
+  }
+
+  $("#prTreino").onchange = e => { pr.treino = e.target.checked; pr.shown.clear(); renderPranchas(); };
+  $("#prRevealAll").onclick = () => { const p = PRANCHAS.find(x => x.id === pr.cur); p.ids.forEach(i => pr.shown.add(i)); renderPranchas(); };
+  $("#prPrint").onclick = () => window.print();
 
   // ---------- teclado ----------
   document.addEventListener("keydown", e => {

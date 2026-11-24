@@ -18,6 +18,7 @@
   </div>
   <nav class="tabs" role="tablist">
     <button data-view="explorar" class="active">Explorar</button>
+    <button data-view="pranchas">Pranchas</button>
     <button data-view="aponte">Quiz: aponte</button>
     <button data-view="nomeie">Quiz: nomeie</button>
     <button data-view="lista">Checklist</button>
@@ -76,6 +77,27 @@
   </aside>
 </main>
 
+<!-- ================= PRANCHAS ================= -->
+<main id="view-pranchas" class="view pranchas">
+  <aside class="prside">
+    <div class="prhead">Pranchas por região</div>
+    <div id="prList" class="prlist"></div>
+  </aside>
+  <section class="prmain">
+    <div class="prtop">
+      <div><h2 id="prTitle"></h2><p id="prSub" class="prsub"></p></div>
+      <div class="propts">
+        <label><input type="checkbox" id="prTreino"> Modo treino (esconder nomes)</label>
+        <button id="prRevealAll">Revelar tudo</button>
+        <button id="prPrint">Imprimir</button>
+      </div>
+    </div>
+    <div class="prsheet"><svg id="prSvg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg></div>
+    <p class="prcount" id="prCount"></p>
+    <div id="prInfo"></div>
+  </section>
+</main>
+
 <!-- ================= QUIZ APONTE ================= -->
 <main id="view-aponte" class="view quiz">
   <div class="quizhead">
@@ -119,6 +141,7 @@
 </main>
 
 <script src="data.js"></script>
+<script src="pranchas.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
