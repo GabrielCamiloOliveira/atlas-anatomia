@@ -50,14 +50,41 @@ h1{font-size:17px;margin:0}
 .item .known{margin-left:auto;color:var(--ok);font-size:12px}
 
 .center{display:flex;flex-direction:column;overflow:hidden}
-.figbar{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;padding:10px 10px 8px;scrollbar-width:thin}
-.figbar .sep{flex:none;width:1px;background:var(--line);margin:0 4px}
+/* abas das figuras */
+.figbarwrap{position:relative;display:flex;align-items:center;gap:4px;padding:10px 8px 8px;border-bottom:1px solid var(--line);background:linear-gradient(#fffdf9,#faf5ee)}
+.figbar{flex:1;display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding:2px 2px 4px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 18px,#000 calc(100% - 18px),transparent 100%)}
+.figbar::-webkit-scrollbar{display:none}
+.figbar .sep{flex:none;width:2px;border-radius:2px;background:var(--line);margin:6px 6px}
+.fbarrow{flex:none;width:34px;height:34px;border-radius:50%;padding:0;font-size:22px;line-height:1;display:grid;place-items:center;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1);color:var(--ink);transition:opacity .2s}
+.fbarrow.off{opacity:.25;pointer-events:none}
+.figtab{position:relative;flex:none;display:flex;align-items:center;gap:10px;min-height:54px;padding:8px 16px 8px 8px;border-radius:14px;border:1px solid var(--line);background:#fff;
+  font-size:14px;font-weight:600;text-align:left;white-space:nowrap;box-shadow:0 1px 2px rgba(60,40,20,.06);transition:transform .12s,box-shadow .12s,background .12s}
+.figtab:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(60,40,20,.12);border-color:#d6c8b6}
+.figtab .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:18px;background:#f4ece2;flex:none}
+.figtab.sysF .ic{background:#f8e3e8} .figtab.sysM .ic{background:#e2eef4}
+.figtab .tx{display:flex;flex-direction:column;line-height:1.2}
+.figtab .tx small{font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+.figtab.active{background:linear-gradient(135deg,#3a302a,#5a4638);color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(60,40,20,.25)}
+.figtab.active .tx small{color:#e8d8c8}
+.figtab.active .ic{background:rgba(255,255,255,.15)}
+.figtab.has:not(.active){border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.hasdot{position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px #fff}
+/* zoom */
+.zoombox{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:3px 6px}
+.zoombox button{width:28px;height:28px;padding:0;border-radius:7px;font-size:16px;line-height:1}
+.zoombox .zreset{width:auto;padding:0 10px;font-size:12.5px}
+.zoombox input[type=range]{width:140px;accent-color:var(--accent)}
+.ztxt{min-width:44px;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600}
+.stagewrap.zoomed{cursor:grab}
+.stagewrap.panning{cursor:grabbing;user-select:none}
+.stagewrap.panning .pin{pointer-events:none}
 .chip{font-size:12.5px;padding:5px 10px;border-radius:20px;border:1px solid var(--line);background:#fff;cursor:pointer;white-space:nowrap}
 .chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
 .chip.has{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
 .chip.active.has{box-shadow:none}
 .chip .k{font-size:10px;opacity:.7;margin-right:4px}
-.toolbar{display:flex;gap:16px;align-items:center;padding:4px 12px 8px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.toolbar{display:flex;gap:16px;align-items:center;padding:8px 12px;font-size:13px;color:var(--muted);flex-wrap:wrap}
 .toolbar select{padding:3px 6px;border-radius:6px;border:1px solid var(--line)}
 .edit-toggle{margin-left:auto}
 .editbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 12px;background:#fff6e0;border-top:1px solid #f0dca8;border-bottom:1px solid #f0dca8;font-size:12.5px}

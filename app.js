@@ -106,13 +106,28 @@
       lastSys = f.sys;
       const c = document.createElement("button");
       const has = st.sel && pinsOf(f)[st.sel];
-      c.className = "chip" + (f.id === st.fig ? " active" : "") + (has ? " has" : "");
-      c.innerHTML = `<span class="k">${f.tipo === "foto" ? "📷" : "✏️"}</span>${f.t.replace("Foto · ", "")}`;
-      c.title = has ? "Esta figura mostra a estrutura selecionada" : "";
-      c.onclick = () => { st.fig = f.id; renderAll(); };
+      c.className = "figtab " + f.tipo + " sys" + f.sys + (f.id === st.fig ? " active" : "") + (has ? " has" : "");
+      c.innerHTML = `<span class="ic">${f.tipo === "foto" ? "📷" : "✏️"}</span>
+        <span class="tx"><small>${f.tipo === "foto" ? "Foto do modelo" : "Esquema"}${f.sys === "F" ? " · fem." : " · masc."}</small>${f.t.replace("Foto · ", "")}</span>
+        ${has ? `<span class="hasdot" title="Mostra a estrutura selecionada"></span>` : ""}`;
+      c.onclick = () => { st.fig = f.id; st.zoom = 1; $("#zoom").value = 1; renderAll(); };
       bar.appendChild(c);
     }
+    updateArrows();
   }
+  // roda do mouse rola as abas na horizontal
+  const figbarEl = $("#figbar");
+  figbarEl.addEventListener("wheel", e => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { e.preventDefault(); figbarEl.scrollLeft += e.deltaY; }
+  }, { passive: false });
+  figbarEl.addEventListener("scroll", () => updateArrows());
+  function updateArrows() {
+    const b = figbarEl;
+    $("#fbL").classList.toggle("off", b.scrollLeft <= 2);
+    $("#fbR").classList.toggle("off", b.scrollLeft + b.clientWidth >= b.scrollWidth - 2);
+  }
+  $("#fbL").onclick = () => figbarEl.scrollBy({ left: -figbarEl.clientWidth * 0.7, behavior: "smooth" });
+  $("#fbR").onclick = () => figbarEl.scrollBy({ left: figbarEl.clientWidth * 0.7, behavior: "smooth" });
 
   function placePins(container, fig, opts) {
     container.innerHTML = "";
@@ -161,7 +176,10 @@
     if (img.getAttribute("src") !== fig.src) img.src = fig.src;
     fitStage($("#stage"), $("#stagewrap"), fig, st.zoom);
     learnRatio(img, fig.id, () => fitStage($("#stage"), $("#stagewrap"), fig, st.zoom));
-    const selChip = $("#figbar .chip.active"); if (selChip) selChip.scrollIntoView({ block: "nearest", inline: "nearest" });
+    const selChip = $("#figbar .figtab.active");
+    if (selChip) { const b = figbarEl, l = selChip.offsetLeft - b.offsetLeft; if (l < b.scrollLeft || l + selChip.offsetWidth > b.scrollLeft + b.clientWidth) b.scrollTo({ left: l - 40, behavior: "smooth" }); }
+    $("#zoomTxt").textContent = Math.round(st.zoom * 100) + "%";
+    $("#stagewrap").classList.toggle("zoomed", st.zoom > 1);
     $("#fignote").innerHTML = `<b>${fig.t}</b> — ${fig.nota}`;
     const pinsEl = $("#pins");
     placePins(pinsEl, fig, {
@@ -217,7 +235,43 @@
   }
 
   $("#labelMode").onchange = e => { st.labelMode = e.target.value; renderStage(); };
-  $("#zoom").oninput = e => { st.zoom = +e.target.value; renderStage(); };
+  // ---------- zoom: slider, botões, roda do mouse (no ponto do cursor) e arrastar ----------
+  const ZMIN = 1, ZMAX = 5;
+  function setZoom(z, cx, cy) {
+    const wrap = $("#stagewrap"), stage = $("#stage");
+    z = Math.min(ZMAX, Math.max(ZMIN, z));
+    if (z === st.zoom) return;
+    const wr = wrap.getBoundingClientRect(), sr = stage.getBoundingClientRect();
+    if (cx == null) { cx = wr.left + wr.width / 2; cy = wr.top + wr.height / 2; }
+    const rx = (cx - sr.left) / sr.width, ry = (cy - sr.top) / sr.height;
+    st.zoom = z; $("#zoom").value = z;
+    renderStage();
+    const nr = stage.getBoundingClientRect();
+    wrap.scrollLeft += (nr.left + rx * nr.width) - cx;
+    wrap.scrollTop += (nr.top + ry * nr.height) - cy;
+  }
+  $("#zoom").oninput = e => setZoom(+e.target.value);
+  $("#zoomIn").onclick = () => setZoom(st.zoom * 1.25);
+  $("#zoomOut").onclick = () => setZoom(st.zoom / 1.25);
+  $("#zoomReset").onclick = () => setZoom(1);
+  $("#stagewrap").addEventListener("wheel", e => {
+    e.preventDefault();
+    setZoom(st.zoom * Math.exp(-e.deltaY * 0.0015), e.clientX, e.clientY);
+  }, { passive: false });
+  // arrastar para mover quando ampliado (fora do modo edição)
+  let pan = null;
+  $("#stagewrap").addEventListener("pointerdown", e => {
+    if (st.zoom <= 1 || st.edit || e.button !== 0 || e.target.classList.contains("pin")) return;
+    const w = $("#stagewrap");
+    pan = { x: e.clientX, y: e.clientY, sl: w.scrollLeft, st: w.scrollTop, moved: false };
+  });
+  window.addEventListener("pointermove", e => {
+    if (!pan) return;
+    const dx = e.clientX - pan.x, dy = e.clientY - pan.y;
+    if (Math.abs(dx) + Math.abs(dy) > 4) { pan.moved = true; $("#stagewrap").classList.add("panning"); }
+    if (pan.moved) { const w = $("#stagewrap"); w.scrollLeft = pan.sl - dx; w.scrollTop = pan.st - dy; }
+  });
+  window.addEventListener("pointerup", () => { pan = null; $("#stagewrap").classList.remove("panning"); });
   $("#editMode").onchange = e => { st.edit = e.target.checked; $("#editbar").classList.toggle("hidden", !st.edit); renderAll(); };
   $("#btnRemovePin").onclick = () => { if (st.sel) setOverride(st.fig, st.sel, null); };
   $("#btnExport").onclick = () => {
